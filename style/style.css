@@ -9,7 +9,7 @@ html, body{
     height: 100vh;
 }
 body{
-    background: linear-gradient(to right,rgb(51, 35, 153), rgb(177, 26, 26));
+    background: linear-gradient(to right,rgb(133, 12, 181), rgb(42, 224, 215));
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,7 +17,7 @@ body{
     overflow: hidden;
 }
 .clock{
-    background-color: rgb(244, 232, 232, 0.6);
+    background-color: rgb(244, 232, 232, 0.4);
     width: 400px;
     height: 400px;
     border-radius: 50%;
@@ -88,4 +88,58 @@ body{
     width: 10px;
     height: 30%;
     background-color: black;
+}
+
+/* Le compte a rebours */
+
+.compteRebour{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    background-color: rgb(255, 249, 249, 0.8);
+    padding: 20px;
+    border-radius: 3%;
+}
+.compteRebour h1{
+    margin: 25px 0;
+    font-size: 38px;
+    font-weight: 500;
+}
+.compteRebour .content{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+/* disable if active */
+.compteRebour .content.disable{
+    opacity: 0.6;
+    pointer-events: none;
+}
+.compteRebour .colRebour{
+    border-radius: 7px;
+    padding: 0 10px;
+    border: 1px solid gainsboro;
+    width: calc(100% / 3 - 5px);
+}
+.colRebour select{
+    outline: none;
+    border: none;
+    height: 55px;
+    width: 100%;
+    font-size: 19px;
+}
+.compteRebour button{
+    width: 100%;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+    background: linear-gradient(to left,rgb(93, 74, 217), rgb(220, 41, 41));
+    margin-top: 20px;
+    font-size: 20px;
+    padding: 18px 0;
+    border-radius: 7px;
+
 }
