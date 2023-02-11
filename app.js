@@ -29,6 +29,8 @@ const time = document.querySelector('#time'); //  affichage de l'heure
 const content = document.querySelector(".content");
 const selectMenu = document.querySelectorAll("select");
 const setAlarmBtn = document.querySelector("#btnAlarm");
+let ringtone = new Audio("./alarm/alarm.mp3");  // tonalité de l'alarme
+let isAlarmSet = false;
 
 let alarmTime;
 
@@ -75,30 +77,40 @@ setInterval(() => {
     time.innerText = `${h}:${m}:${s} ${ampm}`;
 
     // 
-    if(alarmTime == `${h} ${m}:${ampm}`){
-        console.log('Alarme');
+    if(alarmTime == `${h}:${m} ${ampm}`){
+        ringtone.play();
+        ringtone.loop = true;
     }
 
-    console.log('alarme: ' +alarmTime);
-    console.log('   :    ');
-    console.log(`${h}:${m} ${ampm}`);
+    // console.log('alarme: ' +alarmTime);
+    // console.log('   :    ');
+    // console.log(`${h}:${m} ${ampm}`);
 
 }, 1000);
 
 //
 function setAlarm(){
+
+    if(isAlarmSet){ // if isAlarmSet is true.
+        alarmTime = ""; // vidé la valeur de alarmTime.
+        ringtone.pause(); // pause la sonnerie.
+        content.classList.remove("disable"); // enlever la class "disable";
+        setAlarmBtn.innerText = "Set Alarm"; // remettre "Set Alarm" sur le button.
+        return isAlarmSet = false; // remettre isAlarmSet a false.
+    }
     
     //  get alarme
-    let alarme = `${selectMenu[0].value} ${selectMenu[1].value}:${selectMenu[2].value}`;
+    let alarme = `${selectMenu[0].value}:${selectMenu[1].value} ${selectMenu[2].value}`;
     
     if(alarme.includes("Hour") || alarme.includes("Minute") || alarme.includes("AM/PM")){
 
         return alert("SVP, entré une heure valide !");
     }
 
+    isAlarmSet = true;
     alarmTime = alarme;
-    content.classList.add("disabel");
-    setAlarmBtn.innerText = "Clear Alarm";
+    content.classList.add("disable");   //  ajout la classe disable
+    setAlarmBtn.innerText = "Clear Alarm";  //  change "set Alarm" par "Clear Aalrm" sur le 'button'
 }
 // Le button set alarm
 setAlarmBtn.addEventListener("click", setAlarm)
