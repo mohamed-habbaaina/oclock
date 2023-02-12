@@ -30,27 +30,41 @@
         </div>
 
         <!-- compte a rebours -->
-        <div class="compteRebour">
-            <h1 id="time">00:00:00 PM</h1>
-            <div class="content">
-                <div class="colRebour">
-                    <select name="" id="">
-                        <option value="Hour" selected hidden>Hour</option>
-                    </select>
+        <div class="rebour_stop">
+            
+            <div class="compteRebour">
+                <h1 id="time">00:00:00 PM</h1>
+                <div class="content">
+                    <div class="colRebour">
+                        <select name="" id="">
+                            <option value="Hour" selected hidden>Hour</option>
+                        </select>
+                    </div>
+                    <div class="colRebour">
+                        <select name="">
+                            <option value="Minute" selected hidden>Minute</option>
+                        </select>
+                    </div>
+                    <div class="colRebour">
+                        <select name="" id="">
+                            <option value="AM/PM" selected hidden>AM/PM</option>
+                        </select>
+                    </div>
+    
                 </div>
-                <div class="colRebour">
-                    <select name="" id="">
-                        <option value="Minute" selected hidden>Minute</option>
-                    </select>
-                </div>
-                <div class="colRebour">
-                    <select name="" id="">
-                        <option value="AM/PM" selected hidden>AM/PM</option>
-                    </select>
-                </div>
+                <button id="btnAlarm">Set Alarme</button>
+            </div>
+
+            <!-- the stopwatch -->
+            <div class="stopwatch">
+            <h1 id="stopwatchAffich">00 : 00 : 00</h1>
+            <div class="buttonWatch">
+                <img src="img/stop.png" alt="" id="watchstop">
+                <img src="img/play.png" alt="" id="startwatch">
+                <img src="img/reset.png" alt="" id="resetwatch">
+            </div>
 
             </div>
-            <button id="btnAlarm">Set Alarme</button>
         </div>
     </main>
 
