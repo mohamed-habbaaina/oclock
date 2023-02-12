@@ -154,7 +154,8 @@ function start_watch(){
 
         
         stopwatchAffich.innerText = `${hrs} ${sepa} ${mins} ${sepa} ${secs}`
-        
+        startwatch.classList.add("disable");
+
     }, 1000);
 
 }
@@ -162,6 +163,7 @@ function start_watch(){
 //  function stop stopwatch
 function watch_stop(){
     clearInterval(interval);
+    startwatch.classList.remove("disable");
     interval = null;
 }
 
