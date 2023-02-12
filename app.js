@@ -1,4 +1,5 @@
-// ********* L'horloge  ***************
+// *********************************************
+// *********** L'horloge  **********************
 
 setInterval(setClock, 1000);    //  interval 1 second
 
@@ -24,7 +25,10 @@ function setRotation(element, rotationRatio){
 }
 setClock();
 
-// ********* Compte à Rebour  ***************
+
+// *********************************************
+// ************ Compte à Rebour  ***************
+
 const time = document.querySelector('#time'); //  affichage de l'heure 
 const content = document.querySelector(".content");
 const selectMenu = document.querySelectorAll("select");
@@ -51,6 +55,7 @@ for (let i = 2; i > 0; i--) {
     let option = `<option value="${ampm}">${ampm}</option>`;
     selectMenu[2].firstElementChild.insertAdjacentHTML("afterend", option);
 }
+
 
 setInterval(() => {
     
@@ -82,10 +87,6 @@ setInterval(() => {
         ringtone.loop = true;
     }
 
-    // console.log('alarme: ' +alarmTime);
-    // console.log('   :    ');
-    // console.log(`${h}:${m} ${ampm}`);
-
 }, 1000);
 
 //
@@ -104,7 +105,7 @@ function setAlarm(){
     
     if(alarme.includes("Hour") || alarme.includes("Minute") || alarme.includes("AM/PM")){
 
-        return alert("SVP, entré une heure valide !");
+        return alert("SVP, Entrer une heure valide !");
     }
 
     isAlarmSet = true;
@@ -113,4 +114,60 @@ function setAlarm(){
     setAlarmBtn.innerText = "Clear Alarm";  //  change "set Alarm" par "Clear Aalrm" sur le 'button'
 }
 // Le button set alarm
-setAlarmBtn.addEventListener("click", setAlarm)
+setAlarmBtn.addEventListener("click", setAlarm);
+
+
+// *********************************************
+// *************  The Stopwatch  ***************
+
+const stopwatchAffich = document.querySelector('#stopwatchAffich');
+const startwatch = document.querySelector('#startwatch');
+const watchstop = document.querySelector('#watchstop');
+const resetwatch = document.querySelector('#resetwatch');
+let seconds = 0, interval = null;
+
+// Event Listener 
+startwatch.addEventListener('click', start_watch);
+watchstop.addEventListener('click', watch_stop);
+resetwatch.addEventListener('click', reset_watch);
+// 
+
+function start_watch(){
+}
+
+function start_watch(){
+    
+    interval = setInterval(() => {
+        
+        seconds++;
+        
+        // update stopwatch
+        let hrs = Math.floor(seconds / (60 * 60));
+        let mins =  Math.floor((seconds - (hrs * 60 * 60)) / 60);
+        let secs = seconds % 60;
+
+        // format if < 10 
+        hrs = hrs < 10 ? "0" + hrs : hrs;
+        mins = mins < 10 ? "0" + mins : mins;
+        secs = secs < 10 ? "0" + secs : secs;
+        let sepa = secs % 2 == 0 ? ":": " ";
+
+        
+        stopwatchAffich.innerText = `${hrs} ${sepa} ${mins} ${sepa} ${secs}`
+        
+    }, 1000);
+
+}
+
+//  function stop stopwatch
+function watch_stop(){
+    clearInterval(interval);
+    interval = null;
+}
+
+//  function reset stopwatch
+function reset_watch(){
+    watch_stop();
+    seconds = 0;
+    stopwatchAffich.innerText = "00 : 00 : 00"
+}
